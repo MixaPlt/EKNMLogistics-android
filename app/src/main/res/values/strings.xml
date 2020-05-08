@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">EknmLogistics</string>
+    <string name="toast_coming_soon">Coming soon</string>
 </resources>
