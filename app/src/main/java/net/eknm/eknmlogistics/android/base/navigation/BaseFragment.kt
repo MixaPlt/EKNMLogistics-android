@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import dagger.android.support.AndroidSupportInjection
+import net.eknm.eknmlogistics.BR
 import net.eknm.eknmlogistics.android.BackPressHandler
 import net.eknm.eknmlogistics.android.showToast
 import net.eknm.eknmlogistics.android.singleThreadLazy
@@ -47,6 +48,8 @@ abstract class BaseFragment<VM : BaseFragmentViewModel, DB : ViewDataBinding> : 
         nullableBindingProperty = DataBindingUtil.inflate(
             inflater, layoutResId, container, false
         )
+
+        binding.setVariable(BR.viewModel, viewModel)
 
         viewModel.showToastEvent.observe(viewLifecycleOwner, Observer {
             context!!.showToast(it)
