@@ -61,6 +61,10 @@ abstract class BaseFragment<VM : BaseFragmentViewModel, DB : ViewDataBinding> : 
         viewModel.openDrawerEvent.observe(viewLifecycleOwner, Observer {
             openDrawer()
         })
+
+        viewModel.onNavigateBack.observe(viewLifecycleOwner, Observer {
+            activity?.onBackPressed()
+        })
         return binding.root
     }
 

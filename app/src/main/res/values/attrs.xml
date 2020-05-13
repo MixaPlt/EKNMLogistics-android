@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ToolbarView">
+        <attr name="toolbarLeftActionIconTint" format="color" />
+        <attr name="toolbarRightActionIconTint" format="color" />
+        <attr name="titleText" format="string" />
+        <attr name="titleTextColor" format="color" />
+        <attr name="leftActionIconDrawable" format="reference" />
+        <attr name="rightActionIconDrawable" format="reference" />
+    </declare-styleable>
+</resources>

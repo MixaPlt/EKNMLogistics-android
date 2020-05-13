@@ -47,4 +47,10 @@ class LoginActivity : BaseFragmentActivity<LoginActivityViewModel>() {
             }
             .commit()
     }
+
+    override fun onBackPressed() {
+        if (!supportFragmentManager.popBackStackImmediate()) {
+            finish()
+        }
+    }
 }

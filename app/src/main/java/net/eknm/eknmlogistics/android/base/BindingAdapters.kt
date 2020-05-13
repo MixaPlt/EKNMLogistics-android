@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import net.eknm.eknmlogistics.android.ToolbarView
 
 @BindingAdapter("drawableId")
 fun bindDrawableIdToImageView(imageView: ImageView, drawableId: Int) {
@@ -39,4 +40,9 @@ fun bindAvatarUrlToImageView(imageView: ImageView, avatarUrl: String) {
 fun setFormattedText(textView: TextView, format: String, argId: Int) {
     if (argId == 0) return
     textView.text = String.format(format, textView.resources.getString(argId))
+}
+
+@BindingAdapter("leftActionClickListener")
+fun setLeftActionClickListener(toolbarView: ToolbarView, listener: (() -> Unit)) {
+    toolbarView.setLeftActionIconClickListener { listener() }
 }
