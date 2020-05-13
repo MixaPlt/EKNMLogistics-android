@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="net.eknm.eknmlogistics.login.loginRegisterFragment.LoginRegisterViewModel"
+            type="net.eknm.eknmlogistics.authorization.loginRegisterFragment.LoginRegisterViewModel"
             />
     </data>
 

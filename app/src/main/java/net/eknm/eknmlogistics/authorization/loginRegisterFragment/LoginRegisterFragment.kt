@@ -1,4 +1,4 @@
-package net.eknm.eknmlogistics.login.loginRegisterFragment
+package net.eknm.eknmlogistics.authorization.loginRegisterFragment
 
 import net.eknm.eknmlogistics.R
 import net.eknm.eknmlogistics.android.base.navigation.BaseFragment

@@ -2,8 +2,8 @@ package net.eknm.eknmlogistics.root
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import net.eknm.eknmlogistics.login.LoginActivity
-import net.eknm.eknmlogistics.login.LoginActivityModule
+import net.eknm.eknmlogistics.authorization.LoginActivity
+import net.eknm.eknmlogistics.authorization.LoginActivityModule
 
 @Module
 interface ActivityProviderModule {

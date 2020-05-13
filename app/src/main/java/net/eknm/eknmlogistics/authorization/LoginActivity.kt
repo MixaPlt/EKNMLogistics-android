@@ -1,12 +1,13 @@
-package net.eknm.eknmlogistics.login
+package net.eknm.eknmlogistics.authorization
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import net.eknm.eknmlogistics.R
 import net.eknm.eknmlogistics.android.base.navigation.BaseFragmentActivity
-import net.eknm.eknmlogistics.login.loginFragment.LoginFragment
-import net.eknm.eknmlogistics.login.loginRegisterFragment.LoginRegisterFragment
+import net.eknm.eknmlogistics.authorization.loginFragment.LoginFragment
+import net.eknm.eknmlogistics.authorization.loginRegisterFragment.LoginRegisterFragment
+import net.eknm.eknmlogistics.authorization.registerFragment.RegisterFragment
 
 class LoginActivity : BaseFragmentActivity<LoginActivityViewModel>() {
     override val layoutId = R.layout.layout_flow
@@ -30,6 +31,9 @@ class LoginActivity : BaseFragmentActivity<LoginActivityViewModel>() {
     private fun observeLoginRegisterFragment(fragment: LoginRegisterFragment) {
         fragment.viewModel.onLoginClickEvent.observe(this, Observer {
             showFragment(LoginFragment.newInstance())
+        })
+        fragment.viewModel.onRegisterClickEvent.observe(this, Observer {
+            showFragment(RegisterFragment.newInstance())
         })
     }
 

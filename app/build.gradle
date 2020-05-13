@@ -3,6 +3,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+def localProperties = new Properties()
+project.rootProject.file('local.properties').newDataInputStream().withCloseable { fileInputStream ->
+    localProperties.load(fileInputStream)
+}
+
+def apiUrl = localProperties['apiUrl']
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -15,6 +22,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField 'String', "API_URL", apiUrl
     }
 
     buildTypes {

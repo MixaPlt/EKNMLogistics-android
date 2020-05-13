@@ -1,4 +1,4 @@
-package net.eknm.eknmlogistics.login.loginRegisterFragment
+package net.eknm.eknmlogistics.authorization.loginRegisterFragment
 
 import androidx.lifecycle.LiveData
 import net.eknm.eknmlogistics.android.base.SingleLiveEvent

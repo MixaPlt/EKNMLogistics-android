@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="net.eknm.eknmlogistics.authorization.loginFragment.LoginViewModel"
+            type="net.eknm.eknmlogistics.authorization.registerFragment.RegisterViewModel"
             />
     </data>
 
@@ -42,6 +42,27 @@
             app:layout_constraintWidth_percent="0.27"
             tools:ignore="ContentDescription"
             />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilEmail"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="22dp"
+            app:layout_constraintBottom_toTopOf="@id/tilLogin"
+            app:layout_constraintEnd_toEndOf="@id/loginButton"
+            app:layout_constraintStart_toStartOf="@id/loginButton"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-10dp"
+                android:hint="@string/text_email"
+                android:inputType="textEmailAddress"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilLogin"
@@ -94,7 +115,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="32dp"
-            android:text="@string/text_login"
+            android:text="@string/text_register"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

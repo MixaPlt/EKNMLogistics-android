@@ -5,12 +5,14 @@ import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import net.eknm.eknmlogistics.EknmLogisticsApplication
+import net.eknm.eknmlogistics.api.ApiModule
 import javax.inject.Singleton
 
 @Singleton
 @Component(
     modules = [
         AppModule::class,
+        ApiModule::class,
         RepositoryModule::class,
         ActivityProviderModule::class,
         AndroidSupportInjectionModule::class
