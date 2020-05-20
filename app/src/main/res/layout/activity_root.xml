@@ -21,17 +21,24 @@
         tools:openDrawer="left"
         >
 
+        <fragment
+            android:id="@+id/mapContainer"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
         <FrameLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/white"
             />
 
         <include
             android:id="@+id/drawer"
-            app:viewModel="@{viewModel}"
             layout="@layout/layout_drawer"
+            app:viewModel="@{viewModel}"
+            tools:visibility="gone"
             />
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

@@ -22,6 +22,7 @@ class LoginActivity : BaseFragmentActivity<LoginActivityViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(layoutId)
 
         viewModel.changeFlowToRootEvent.observe(this, Observer {
             startActivity(RootActivity.newIntent(this))

@@ -9,6 +9,7 @@ project.rootProject.file('local.properties').newDataInputStream().withCloseable 
 }
 
 def apiUrl = localProperties['apiUrl']
+def googleMapsApiKey = localProperties['googleMapsApiKey']
 
 android {
     compileSdkVersion 29
@@ -20,6 +21,8 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+
+        resValue("string", "google_maps_api_key", googleMapsApiKey)
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -68,4 +71,7 @@ dependencies {
 
     implementation 'com.google.android.material:material:1.1.0-beta02'
     implementation 'com.github.bumptech.glide:glide:4.9.0'
+
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
+    implementation 'com.google.android.gms:play-services-maps:16.0.0'
 }

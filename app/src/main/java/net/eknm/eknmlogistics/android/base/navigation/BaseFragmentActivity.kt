@@ -28,7 +28,6 @@ abstract class BaseFragmentActivity<VM : BaseViewModel> : DaggerAppCompatActivit
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(layoutId)
 
         savedInstanceState ?: init()
         viewModel.onAttach()

@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.SupportMapFragment
 import kotlinx.android.synthetic.main.activity_root.*
 import kotlinx.android.synthetic.main.layout_drawer.view.*
 import net.eknm.eknmlogistics.BR
@@ -19,7 +21,7 @@ class RootActivity : BaseFragmentActivity<RootViewModel>() {
     override val vmClass: Class<RootViewModel> = RootViewModel::class.java
 
     private lateinit var binding: ActivityRootBinding
-
+    private lateinit var map: GoogleMap
     private val currentFragment get() = supportFragmentManager.findFragmentById(R.id.container)
 
     override fun init() {
@@ -36,6 +38,18 @@ class RootActivity : BaseFragmentActivity<RootViewModel>() {
         drawer.logOutBlock.setOnClickListener {
             viewModel.logOut()
         }
+
+        (mapContainer as SupportMapFragment).getMapAsync { googleMap ->
+            setupMap(googleMap)
+        }
+    }
+
+    private fun setupMap(googleMap: GoogleMap) {
+        map = googleMap
+        map.uiSettings.isCompassEnabled = false
+        map.uiSettings.isMyLocationButtonEnabled = false
+        map.uiSettings.isRotateGesturesEnabled = false
+        map.uiSettings.isTiltGesturesEnabled = false
     }
 
     private fun observeViewModel() {
