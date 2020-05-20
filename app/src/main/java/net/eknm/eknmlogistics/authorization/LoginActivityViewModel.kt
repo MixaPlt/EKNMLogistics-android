@@ -3,6 +3,7 @@ package net.eknm.eknmlogistics.authorization
 import androidx.lifecycle.LiveData
 import net.eknm.eknmlogistics.android.base.SingleLiveEvent
 import net.eknm.eknmlogistics.android.base.navigation.BaseViewModel
+import net.eknm.eknmlogistics.android.ioToMain
 import net.eknm.eknmlogistics.authorization.authorizationRepository.AuthorizationRepository
 import javax.inject.Inject
 
@@ -21,6 +22,7 @@ class LoginActivityViewModel @Inject constructor(
         executeDisposable {
             authorizationRepository
                 .trackSession()
+                .ioToMain()
                 .subscribe {
                     if (it.item != null) {
                         onLoggedIn()

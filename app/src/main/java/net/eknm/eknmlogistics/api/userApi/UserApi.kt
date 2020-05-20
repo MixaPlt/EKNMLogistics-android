@@ -18,6 +18,9 @@ interface UserApi {
     @GET("me")
     fun getOwnProfile(): Single<User>
 
+    @POST("login")
+    fun logIn(@Body loginBody: LoginBody): Single<User>
+
     companion object {
         fun newInstance(okHttpClient: OkHttpClient, baseUrl: String, gson: Gson): UserApi {
             val retrofit = Retrofit.Builder()

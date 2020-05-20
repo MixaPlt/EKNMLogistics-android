@@ -6,6 +6,7 @@ import io.reactivex.processors.BehaviorProcessor
 import net.eknm.eknmlogistics.android.Optional
 import net.eknm.eknmlogistics.android.ioToIo
 import net.eknm.eknmlogistics.android.toMD5
+import net.eknm.eknmlogistics.api.userApi.LoginBody
 import net.eknm.eknmlogistics.api.userApi.UserApi
 import net.eknm.eknmlogistics.api.userApi.UserRegistrationRequestBody
 import javax.inject.Inject
@@ -29,6 +30,12 @@ class AuthorizationRepository @Inject constructor(
     fun logOut() {
         localUserSource.saveUserToken(null)
         onUserUpdated(null)
+    }
+
+    fun logIn(email: String, password: String): Single<User> {
+        return userApi
+            .logIn(LoginBody(email, password.toMD5()))
+            .doOnSuccess { onUserUpdated(it) }
     }
 
     @SuppressLint("CheckResult")
