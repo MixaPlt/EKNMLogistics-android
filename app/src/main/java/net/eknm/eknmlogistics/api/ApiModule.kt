@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import net.eknm.eknmlogistics.BuildConfig
 import net.eknm.eknmlogistics.EknmLogisticsApplication
+import net.eknm.eknmlogistics.api.userApi.UserApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import javax.inject.Singleton

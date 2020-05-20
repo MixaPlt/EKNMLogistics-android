@@ -7,4 +7,7 @@
     <string name="text_email">Email</string>
     <string name="text_password">Password</string>
     <string name="text_register">Register</string>
+    <string name="invalid_email_format">Invalid email format</string>
+    <string name="name_too_short">Name too short</string>
+    <string name="invalid_password">Invalid password</string>
 </resources>

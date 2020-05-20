@@ -50,8 +50,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="22dp"
             app:layout_constraintBottom_toTopOf="@id/tilLogin"
-            app:layout_constraintEnd_toEndOf="@id/loginButton"
-            app:layout_constraintStart_toStartOf="@id/loginButton"
+            app:layout_constraintEnd_toEndOf="@id/registerButton"
+            app:layout_constraintStart_toStartOf="@id/registerButton"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -71,8 +71,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="22dp"
             app:layout_constraintBottom_toTopOf="@id/tilPassword"
-            app:layout_constraintEnd_toEndOf="@id/loginButton"
-            app:layout_constraintStart_toStartOf="@id/loginButton"
+            app:layout_constraintEnd_toEndOf="@id/registerButton"
+            app:layout_constraintStart_toStartOf="@id/registerButton"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -92,9 +92,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="-10dp"
             android:layout_marginBottom="50dp"
-            app:layout_constraintBottom_toTopOf="@id/loginButton"
-            app:layout_constraintEnd_toEndOf="@id/loginButton"
-            app:layout_constraintStart_toStartOf="@id/loginButton"
+            app:layout_constraintBottom_toTopOf="@id/registerButton"
+            app:layout_constraintEnd_toEndOf="@id/registerButton"
+            app:layout_constraintStart_toStartOf="@id/registerButton"
             >
 
             <com.google.android.material.textfield.TextInputEditText
@@ -108,7 +108,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/loginButton"
+            android:id="@+id/registerButton"
             style="@style/MaterialButtonDefaultStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
