@@ -8,6 +8,7 @@ import net.eknm.eknmlogistics.android.base.navigation.BaseFragmentActivity
 import net.eknm.eknmlogistics.authorization.loginFragment.LoginFragment
 import net.eknm.eknmlogistics.authorization.loginRegisterFragment.LoginRegisterFragment
 import net.eknm.eknmlogistics.authorization.registerFragment.RegisterFragment
+import net.eknm.eknmlogistics.root.RootActivity
 
 class LoginActivity : BaseFragmentActivity<LoginActivityViewModel>() {
     override val layoutId = R.layout.layout_flow
@@ -19,6 +20,11 @@ class LoginActivity : BaseFragmentActivity<LoginActivityViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        viewModel.changeFlowToRootEvent.observe(this, Observer {
+            startActivity(RootActivity.newIntent(this))
+            finish()
+        })
     }
 
     override fun onAttachFragment(fragment: Fragment) {

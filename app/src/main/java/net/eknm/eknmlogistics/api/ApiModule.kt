@@ -18,7 +18,9 @@ class ApiModule {
         val builder = OkHttpClient.Builder()
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+        val loginInterceptor = LoginInterceptor(application)
         builder.addInterceptor(loggingInterceptor)
+        builder.addInterceptor(loginInterceptor)
         return builder.build()
     }
 
