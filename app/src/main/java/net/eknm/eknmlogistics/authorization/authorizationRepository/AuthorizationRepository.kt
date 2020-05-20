@@ -1,6 +1,7 @@
 package net.eknm.eknmlogistics.authorization.authorizationRepository
 
 import android.annotation.SuppressLint
+import io.reactivex.Flowable
 import io.reactivex.Single
 import io.reactivex.processors.BehaviorProcessor
 import net.eknm.eknmlogistics.android.Optional
@@ -36,6 +37,11 @@ class AuthorizationRepository @Inject constructor(
         return userApi
             .logIn(LoginBody(email, password.toMD5()))
             .doOnSuccess { onUserUpdated(it) }
+    }
+
+    fun trackUser(): Flowable<Optional<User>> {
+        updateUser()
+        return userProcessor
     }
 
     @SuppressLint("CheckResult")

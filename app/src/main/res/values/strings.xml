@@ -13,4 +13,5 @@
 
     <!-- Navigation drawer -->
     <string name="log_out">Log out</string>
+    <string name="user_greeting">Hi, %1s!</string>
 </resources>
