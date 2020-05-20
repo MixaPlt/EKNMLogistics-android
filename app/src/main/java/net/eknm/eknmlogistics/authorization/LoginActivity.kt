@@ -1,5 +1,7 @@
 package net.eknm.eknmlogistics.authorization
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -61,6 +63,12 @@ class LoginActivity : BaseFragmentActivity<LoginActivityViewModel>() {
     override fun onBackPressed() {
         if (!supportFragmentManager.popBackStackImmediate()) {
             finish()
+        }
+    }
+
+    companion object {
+        fun newIntent(packageContext: Context): Intent {
+            return Intent(packageContext, LoginActivity::class.java)
         }
     }
 }

@@ -18,6 +18,7 @@ class EknmLogisticsApplication : DaggerApplication(), LocalUserSource {
             }
     }
 
+    @Suppress("DEPRECATION")
     private val prefs by singleThreadLazy {
         PreferenceManager.getDefaultSharedPreferences(this)
     }

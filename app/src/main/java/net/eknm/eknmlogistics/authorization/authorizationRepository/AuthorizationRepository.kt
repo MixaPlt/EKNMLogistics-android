@@ -26,6 +26,11 @@ class AuthorizationRepository @Inject constructor(
 
     fun trackSession() = localUserSource.trackUserToken()
 
+    fun logOut() {
+        localUserSource.saveUserToken(null)
+        onUserUpdated(null)
+    }
+
     @SuppressLint("CheckResult")
     private fun updateUser() {
         userApi
