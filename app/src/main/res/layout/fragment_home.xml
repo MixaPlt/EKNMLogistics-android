@@ -19,11 +19,12 @@
 
         <net.eknm.eknmlogistics.android.ToolbarView
             style="@style/DefaultToolbarStyle"
+            leftActionClickListener="@{() -> viewModel.openDrawer()}"
             android:layout_width="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:leftActionIconDrawable="@null"
+            app:leftActionIconDrawable="@drawable/ic_menu"
             app:titleText="@string/home"
             />
 

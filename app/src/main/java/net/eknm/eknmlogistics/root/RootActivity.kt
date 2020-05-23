@@ -1,9 +1,11 @@
 package net.eknm.eknmlogistics.root
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.view.Gravity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -17,6 +19,7 @@ import kotlinx.android.synthetic.main.layout_drawer.view.*
 import net.eknm.eknmlogistics.BR
 import net.eknm.eknmlogistics.R
 import net.eknm.eknmlogistics.android.base.navigation.BaseFragmentActivity
+import net.eknm.eknmlogistics.android.base.navigation.DrawerManager
 import net.eknm.eknmlogistics.authorization.LoginActivity
 import net.eknm.eknmlogistics.databinding.ActivityRootBinding
 import net.eknm.eknmlogistics.home.HomeFragment
@@ -96,6 +99,19 @@ class RootActivity : BaseFragmentActivity<RootViewModel>() {
                 }
             }
             .commit()
+    }
+
+    @SuppressLint("RtlHardcoded")
+    private fun openDrawer(animated: Boolean = true) {
+        drawerLayout.openDrawer(Gravity.LEFT, animated)
+    }
+
+    override fun onAttachFragment(childFragment: Fragment) {
+        if (childFragment is DrawerManager) {
+            childFragment.openDrawerEvent.observe(this, Observer {
+                openDrawer()
+            })
+        }
     }
 
     private fun checkPermissions(): Boolean {
