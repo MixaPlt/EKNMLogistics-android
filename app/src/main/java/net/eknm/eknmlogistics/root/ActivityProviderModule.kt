@@ -8,6 +8,7 @@ import net.eknm.eknmlogistics.authorization.LoginActivityModule
 @Module
 interface ActivityProviderModule {
 
+    @RootScope
     @ContributesAndroidInjector(modules = [RootActivityModule::class])
     fun rootActivity(): RootActivity
 

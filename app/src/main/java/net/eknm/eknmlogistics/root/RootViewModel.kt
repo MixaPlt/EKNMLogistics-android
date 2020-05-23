@@ -6,10 +6,12 @@ import net.eknm.eknmlogistics.android.base.SingleLiveEvent
 import net.eknm.eknmlogistics.android.base.navigation.BaseFlowViewModel
 import net.eknm.eknmlogistics.authorization.authorizationRepository.AuthorizationRepository
 import net.eknm.eknmlogistics.authorization.authorizationRepository.User
+import net.eknm.eknmlogistics.home.mapInteraction.CenterLocationService
 import javax.inject.Inject
 
 class RootViewModel @Inject constructor(
-    private val authorizationRepository: AuthorizationRepository
+    private val authorizationRepository: AuthorizationRepository,
+    private val centerLocationService: CenterLocationService
 ) : BaseFlowViewModel() {
 
     val userName = ObservableField<String>("you")
@@ -45,5 +47,7 @@ class RootViewModel @Inject constructor(
                     }
                 }
         }
+
+        centerLocationService.centerLocation()
     }
 }

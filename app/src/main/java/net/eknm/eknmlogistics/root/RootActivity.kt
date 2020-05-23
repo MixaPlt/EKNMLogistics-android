@@ -2,11 +2,16 @@ package net.eknm.eknmlogistics.root
 
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
+import io.reactivex.subjects.SingleSubject
 import kotlinx.android.synthetic.main.activity_root.*
 import kotlinx.android.synthetic.main.layout_drawer.view.*
 import net.eknm.eknmlogistics.BR
@@ -14,6 +19,7 @@ import net.eknm.eknmlogistics.R
 import net.eknm.eknmlogistics.android.base.navigation.BaseFragmentActivity
 import net.eknm.eknmlogistics.authorization.LoginActivity
 import net.eknm.eknmlogistics.databinding.ActivityRootBinding
+import net.eknm.eknmlogistics.home.HomeFragment
 
 class RootActivity : BaseFragmentActivity<RootViewModel>() {
 
@@ -22,10 +28,11 @@ class RootActivity : BaseFragmentActivity<RootViewModel>() {
 
     private lateinit var binding: ActivityRootBinding
     private lateinit var map: GoogleMap
+    val mapSingle = SingleSubject.create<GoogleMap>()
     private val currentFragment get() = supportFragmentManager.findFragmentById(R.id.container)
 
     override fun init() {
-
+        showFragment(HomeFragment.newInstance())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,8 +46,24 @@ class RootActivity : BaseFragmentActivity<RootViewModel>() {
             viewModel.logOut()
         }
 
-        (mapContainer as SupportMapFragment).getMapAsync { googleMap ->
-            setupMap(googleMap)
+        checkPermissionsAndSetupMap()
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        checkPermissionsAndSetupMap()
+    }
+
+    private fun checkPermissionsAndSetupMap() {
+        if (checkPermissions()) {
+            (mapContainer as SupportMapFragment).getMapAsync { googleMap ->
+                setupMap(googleMap)
+                mapSingle.onSuccess(googleMap)
+            }
         }
     }
 
@@ -50,6 +73,7 @@ class RootActivity : BaseFragmentActivity<RootViewModel>() {
         map.uiSettings.isMyLocationButtonEnabled = false
         map.uiSettings.isRotateGesturesEnabled = false
         map.uiSettings.isTiltGesturesEnabled = false
+        map.isMyLocationEnabled = true
     }
 
     private fun observeViewModel() {
@@ -59,7 +83,43 @@ class RootActivity : BaseFragmentActivity<RootViewModel>() {
         })
     }
 
+    private fun showFragment(
+        fragment: Fragment,
+        shouldAddToBackStack: Boolean = currentFragment != null
+    ) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.container, fragment)
+            .apply {
+                if (shouldAddToBackStack) {
+                    addToBackStack(null)
+                }
+            }
+            .commit()
+    }
+
+    private fun checkPermissions(): Boolean {
+        val neededPermissions = permissionsList.filter { permission ->
+            ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED
+        }
+        if (neededPermissions.isNotEmpty()) {
+            ActivityCompat.requestPermissions(
+                this,
+                neededPermissions.toTypedArray(),
+                RC_ACTIVITY_PERMISSIONS
+            )
+        }
+        return neededPermissions.isEmpty()
+    }
+
     companion object {
+        private const val RC_ACTIVITY_PERMISSIONS = 1
+
+        private val permissionsList = listOf(
+            "android.permission.ACCESS_COARSE_LOCATION",
+            "android.permission.ACCESS_FINE_LOCATION"
+        )
+
         fun newIntent(packageContext: Context): Intent {
             return Intent(packageContext, RootActivity::class.java)
         }
