@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import net.eknm.eknmlogistics.BuildConfig
 import net.eknm.eknmlogistics.EknmLogisticsApplication
+import net.eknm.eknmlogistics.api.mapsApi.MapsApi
 import net.eknm.eknmlogistics.api.paymentsApi.PaymentsApi
 import net.eknm.eknmlogistics.api.userApi.UserApi
 import okhttp3.OkHttpClient
@@ -37,7 +38,13 @@ class ApiModule {
 
     @Provides
     @Singleton
-    fun provideApymentsApi(okHttpClient: OkHttpClient, gson: Gson): PaymentsApi {
+    fun providePaymentsApi(okHttpClient: OkHttpClient, gson: Gson): PaymentsApi {
         return PaymentsApi.newInstance(okHttpClient, BuildConfig.API_URL + "payments/", gson)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMapsApi(okHttpClient: OkHttpClient, gson: Gson): MapsApi {
+        return MapsApi.newInstance(okHttpClient, BuildConfig.API_URL + "maps/", gson)
     }
 }

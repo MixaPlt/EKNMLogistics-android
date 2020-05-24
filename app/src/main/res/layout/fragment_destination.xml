@@ -17,6 +17,7 @@
         >
 
         <net.eknm.eknmlogistics.android.ToolbarView
+            android:id="@+id/toolbar"
             style="@style/DefaultToolbarStyle"
             leftActionClickListener="@{() -> viewModel.goBack()}"
             android:layout_width="0dp"
@@ -28,15 +29,27 @@
             />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/createOrderButton"
+            android:id="@+id/destination"
             style="@style/MaterialButtonDefaultStyle"
             android:layout_width="0dp"
             android:layout_height="50dp"
+            android:onClick="@{() -> viewModel.onLocationSelected()}"
             app:cornerRadius="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:shapeAppearanceOverlay="@style/BottomShapeAppearance"
+            />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_center_location"
+            android:tint="?attr/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

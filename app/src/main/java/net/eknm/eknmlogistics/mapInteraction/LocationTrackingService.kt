@@ -15,10 +15,14 @@ class LocationTrackingService private constructor(
 ) {
     private val locationProcessor = BehaviorProcessor.create<Location>()
 
-    private val mapCameraState = PublishProcessor.create<MapCameraState>()
+    private val mapCameraState = BehaviorProcessor.create<MapCameraState>()
     private val mapCameraIdle = PublishProcessor.create<Unit>()
 
     private lateinit var googleMap: GoogleMap
+
+    val lastKnownLocation get() = locationProcessor.value
+
+    val lastMapCameraState get() = mapCameraState.value
 
     fun trackLocation(): Flowable<Location> = locationProcessor
 
