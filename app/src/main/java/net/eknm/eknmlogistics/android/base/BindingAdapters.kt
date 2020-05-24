@@ -36,6 +36,13 @@ fun bindAvatarUrlToImageView(imageView: ImageView, avatarUrl: String) {
         .into(imageView)
 }
 
+@BindingAdapter("imageUrl")
+fun bindImageUrlToImageView(imageView: ImageView, url: String) {
+    Glide.with(imageView.context)
+        .load(url)
+        .into(imageView)
+}
+
 @BindingAdapter("format", "argId")
 fun setFormattedText(textView: TextView, format: String, argId: Int) {
     if (argId == 0) return

@@ -32,6 +32,7 @@
             />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/paymentsRecycler"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -39,6 +40,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             tools:listitem="@layout/layout_payment_method"
+            />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="60dp"
+            android:onClick="@{() -> viewModel.addPaymentMethod()}"
+            app:backgroundTint="@android:color/white"
+            app:fabCustomSize="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_add"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

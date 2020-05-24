@@ -21,47 +21,49 @@
 
         <ImageView
             android:id="@+id/image"
+            app:imageUrl="@{item.image}"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintDimensionRatio="3:2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            avatarUrl="https://lh3.googleusercontent.com/proxy/dOwTeGeyJKEUum2RZ5aSijAmXu-8v2XsKkpqdlu50CBL82eYvx1OdG5_u9vSk2icIizz80KDw2luS_AHUcK2i83QUAicGs3Yreyr7dw"
             />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintStart_toEndOf="@id/image"
-            app:layout_constraintEnd_toStartOf="@id/actionIcon"
             android:gravity="center_vertical"
-            android:textSize="20dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:text="@{item.title}"
-            tools:text="5394"/>
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/actionIcon"
+            app:layout_constraintStart_toEndOf="@id/image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="5394"
+            />
 
         <ImageView
             android:id="@+id/actionIcon"
-
             android:layout_width="20dp"
             android:layout_height="20dp"
-        android:tint="?attr/colorPrimary"
-            android:padding="4dp"
             android:layout_marginEnd="16dp"
-
-            app:layout_constraintTop_toTopOf="parent"
+            android:padding="4dp"
+            android:src="@drawable/ic_arrow"
+            android:tint="?attr/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:src="@drawable/ic_arrow"/>
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <View
             android:layout_width="0dp"
             android:layout_height="1dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:background="?attr/colorPrimary"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
