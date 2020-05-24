@@ -1,4 +1,4 @@
-package net.eknm.eknmlogistics.home.mapInteraction
+package net.eknm.eknmlogistics.mapInteraction
 
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback

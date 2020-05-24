@@ -22,9 +22,9 @@ import net.eknm.eknmlogistics.android.base.navigation.BaseFragmentActivity
 import net.eknm.eknmlogistics.android.base.navigation.DrawerManager
 import net.eknm.eknmlogistics.authorization.LoginActivity
 import net.eknm.eknmlogistics.databinding.ActivityRootBinding
-import net.eknm.eknmlogistics.home.HomeFragment
+import net.eknm.eknmlogistics.homeFlow.HomeFlowFragment
+import net.eknm.eknmlogistics.homeFlow.homeFragment.HomeFragment
 import net.eknm.eknmlogistics.payments.PaymentsFlowFragment
-import net.eknm.eknmlogistics.payments.paymentFragment.PaymentsFragment
 
 class RootActivity : BaseFragmentActivity<RootViewModel>() {
 
@@ -89,7 +89,7 @@ class RootActivity : BaseFragmentActivity<RootViewModel>() {
 
         viewModel.flowType.observe(this, Observer { flowType ->
             when (flowType!!) {
-                FlowType.HOME -> showFragment(HomeFragment.newInstance())
+                FlowType.HOME -> showFragment(HomeFlowFragment.newInstance())
                 FlowType.PAYMENTS -> showFragment(PaymentsFlowFragment.newInstance())
             }
             closeDrawer()

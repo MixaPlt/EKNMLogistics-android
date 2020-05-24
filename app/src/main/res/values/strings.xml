@@ -18,4 +18,9 @@
 
     <!-- Home page -->
     <string name="home">Home</string>
+    <string name="create_order">Create order</string>
+
+    <!-- Order creation -->
+    <string name="select_start_destination">Select start destination</string>
+    <string name="select_end_destination">Select end destination</string>
 </resources>

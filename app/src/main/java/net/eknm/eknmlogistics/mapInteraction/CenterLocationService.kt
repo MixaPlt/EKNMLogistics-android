@@ -1,4 +1,4 @@
-package net.eknm.eknmlogistics.home.mapInteraction
+package net.eknm.eknmlogistics.mapInteraction
 
 import android.annotation.SuppressLint
 import com.google.android.gms.maps.CameraUpdateFactory

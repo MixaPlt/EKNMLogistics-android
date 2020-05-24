@@ -42,4 +42,10 @@
         <item name="android:minWidth">35dp</item>
         <item name="android:minHeight">35dp</item>
     </style>
+
+    <style name="BottomShapeAppearance">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">18dp</item>
+        <item name="cornerSizeTopRight">18dp</item>
+    </style>
 </resources>

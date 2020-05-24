@@ -1,4 +1,4 @@
-package net.eknm.eknmlogistics.home.mapInteraction
+package net.eknm.eknmlogistics.mapInteraction
 
 data class Location(
     val latitude: Double,
