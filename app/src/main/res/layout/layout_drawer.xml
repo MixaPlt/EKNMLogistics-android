@@ -6,7 +6,8 @@
 
         <variable
             name="viewModel"
-            type="net.eknm.eknmlogistics.root.RootViewModel"/>
+            type="net.eknm.eknmlogistics.root.RootViewModel"
+            />
     </data>
 
     <com.google.android.material.navigation.NavigationView
@@ -16,11 +17,13 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="#F1F1F1"
-        android:fitsSystemWindows="false">
+        android:fitsSystemWindows="false"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
 
             <ImageView
                 android:id="@+id/avatar"
@@ -34,7 +37,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent="0.32"
-                tools:ignore="ContentDescription"/>
+                tools:ignore="ContentDescription"
+                />
 
             <TextView
                 android:id="@+id/nameText"
@@ -48,7 +52,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/avatar"
-                tools:text="Hi, user name!"/>
+                tools:text="Hi, user name!"
+                />
 
             <View
                 android:id="@+id/headerDivider"
@@ -58,7 +63,52 @@
                 android:background="?attr/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nameText"/>
+                app:layout_constraintTop_toBottomOf="@id/nameText"
+                />
+
+            <LinearLayout
+                android:id="@+id/homeBlock"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:onClick="@{() -> viewModel.showHome()}"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/headerDivider"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:padding="10dp"
+                    android:text="@string/home"
+                    android:textSize="16sp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/paymentMethodsBlock"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:onClick="@{() -> viewModel.showPayments()}"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/homeBlock"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:padding="10dp"
+                    android:text="@string/payment_methods"
+                    android:textSize="16sp"
+                    />
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/logOutBlock"
@@ -69,7 +119,8 @@
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -77,7 +128,8 @@
                     android:layout_marginStart="20dp"
                     android:padding="10dp"
                     android:text="@string/log_out"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.navigation.NavigationView>

@@ -19,6 +19,26 @@ class RootViewModel @Inject constructor(
     private val _onLoggedOutEvent = SingleLiveEvent<Unit>()
     val onLoggedOutEvent: LiveData<Unit> = _onLoggedOutEvent
 
+    private val _flowType = SingleLiveEvent<FlowType>()
+    val flowType: LiveData<FlowType> = _flowType
+    private fun changeFlow(newFlowType: FlowType) {
+        if (flowType.value != newFlowType) {
+            _flowType.value = newFlowType
+        }
+    }
+
+    fun initFlow() {
+        showHome()
+    }
+
+    fun showHome() {
+        changeFlow(FlowType.HOME)
+    }
+
+    fun showPayments() {
+        changeFlow(FlowType.PAYMENTS)
+    }
+
     fun logOut() {
         authorizationRepository.logOut()
     }

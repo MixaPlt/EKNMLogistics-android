@@ -23,6 +23,8 @@ import net.eknm.eknmlogistics.android.base.navigation.DrawerManager
 import net.eknm.eknmlogistics.authorization.LoginActivity
 import net.eknm.eknmlogistics.databinding.ActivityRootBinding
 import net.eknm.eknmlogistics.home.HomeFragment
+import net.eknm.eknmlogistics.payments.PaymentsFlowFragment
+import net.eknm.eknmlogistics.payments.paymentFragment.PaymentsFragment
 
 class RootActivity : BaseFragmentActivity<RootViewModel>() {
 
@@ -35,7 +37,7 @@ class RootActivity : BaseFragmentActivity<RootViewModel>() {
     private val currentFragment get() = supportFragmentManager.findFragmentById(R.id.container)
 
     override fun init() {
-        showFragment(HomeFragment.newInstance())
+        viewModel.initFlow()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,6 +86,14 @@ class RootActivity : BaseFragmentActivity<RootViewModel>() {
             startActivity(LoginActivity.newIntent(this))
             finish()
         })
+
+        viewModel.flowType.observe(this, Observer { flowType ->
+            when (flowType!!) {
+                FlowType.HOME -> showFragment(HomeFragment.newInstance())
+                FlowType.PAYMENTS -> showFragment(PaymentsFlowFragment.newInstance())
+            }
+            closeDrawer()
+        })
     }
 
     private fun showFragment(
@@ -102,8 +112,12 @@ class RootActivity : BaseFragmentActivity<RootViewModel>() {
     }
 
     @SuppressLint("RtlHardcoded")
-    private fun openDrawer(animated: Boolean = true) {
-        drawerLayout.openDrawer(Gravity.LEFT, animated)
+    private fun openDrawer() {
+        drawerLayout.openDrawer(Gravity.LEFT, true)
+    }
+
+    private fun closeDrawer() {
+        drawerLayout.closeDrawers()
     }
 
     override fun onAttachFragment(childFragment: Fragment) {

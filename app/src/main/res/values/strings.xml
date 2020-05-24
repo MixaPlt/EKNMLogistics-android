@@ -13,6 +13,7 @@
 
     <!-- Navigation drawer -->
     <string name="log_out">Log out</string>
+    <string name="payment_methods">Payment Methods</string>
     <string name="user_greeting">Hi, %1s!</string>
 
     <!-- Home page -->
