@@ -1,8 +1,8 @@
-package net.eknm.eknmlogistics.homeFlow
+package net.eknm.eknmlogistics.home
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import net.eknm.eknmlogistics.homeFlow.homeFragment.HomeFragment
+import net.eknm.eknmlogistics.home.homeFragment.HomeFragment
 
 @Module
 interface HomeFlowModule {

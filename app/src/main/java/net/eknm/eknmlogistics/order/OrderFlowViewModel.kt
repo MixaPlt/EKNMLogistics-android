@@ -1,4 +1,4 @@
-package net.eknm.eknmlogistics.orderFlow
+package net.eknm.eknmlogistics.order
 
 import net.eknm.eknmlogistics.android.base.navigation.BaseFlowViewModel
 import javax.inject.Inject

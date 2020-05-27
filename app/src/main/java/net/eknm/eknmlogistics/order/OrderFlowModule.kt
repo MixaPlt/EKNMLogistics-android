@@ -1,8 +1,8 @@
-package net.eknm.eknmlogistics.orderFlow
+package net.eknm.eknmlogistics.order
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import net.eknm.eknmlogistics.orderFlow.destinationFragment.DestinationFragment
+import net.eknm.eknmlogistics.order.destinationFragment.DestinationFragment
 
 @Module
 interface OrderFlowModule {

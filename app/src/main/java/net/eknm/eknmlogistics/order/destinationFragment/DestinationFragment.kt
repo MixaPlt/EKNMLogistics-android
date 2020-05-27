@@ -1,4 +1,4 @@
-package net.eknm.eknmlogistics.orderFlow.destinationFragment
+package net.eknm.eknmlogistics.order.destinationFragment
 
 import android.os.Bundle
 import android.view.View

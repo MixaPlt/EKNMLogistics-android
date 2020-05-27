@@ -1,4 +1,4 @@
-package net.eknm.eknmlogistics.orderFlow.destinationFragment
+package net.eknm.eknmlogistics.order.destinationFragment
 
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData

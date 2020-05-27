@@ -1,4 +1,4 @@
-package net.eknm.eknmlogistics.homeFlow.homeFragment
+package net.eknm.eknmlogistics.home.homeFragment
 
 import net.eknm.eknmlogistics.R
 import net.eknm.eknmlogistics.android.base.navigation.BaseFragment

@@ -1,11 +1,11 @@
-package net.eknm.eknmlogistics.orderFlow
+package net.eknm.eknmlogistics.order
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import net.eknm.eknmlogistics.R
 import net.eknm.eknmlogistics.android.base.navigation.BaseFlowFragment
-import net.eknm.eknmlogistics.orderFlow.destinationFragment.DestinationFragment
-import net.eknm.eknmlogistics.orderFlow.destinationFragment.DestinationViewModel
+import net.eknm.eknmlogistics.order.destinationFragment.DestinationFragment
+import net.eknm.eknmlogistics.order.destinationFragment.DestinationViewModel
 
 class OrderFlowFragment : BaseFlowFragment<OrderFlowViewModel>() {
     override val vmClass = OrderFlowViewModel::class.java

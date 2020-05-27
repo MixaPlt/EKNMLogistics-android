@@ -1,4 +1,4 @@
-package net.eknm.eknmlogistics.homeFlow
+package net.eknm.eknmlogistics.home
 
 import net.eknm.eknmlogistics.android.base.navigation.BaseFlowViewModel
 import net.eknm.eknmlogistics.mapInteraction.CenterLocationService

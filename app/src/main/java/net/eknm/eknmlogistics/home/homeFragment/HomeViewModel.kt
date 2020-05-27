@@ -1,4 +1,4 @@
-package net.eknm.eknmlogistics.homeFlow.homeFragment
+package net.eknm.eknmlogistics.home.homeFragment
 
 import androidx.lifecycle.LiveData
 import net.eknm.eknmlogistics.android.base.SingleLiveEvent

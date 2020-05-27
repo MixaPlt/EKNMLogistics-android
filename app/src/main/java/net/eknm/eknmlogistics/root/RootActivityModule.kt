@@ -3,13 +3,13 @@ package net.eknm.eknmlogistics.root
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
-import net.eknm.eknmlogistics.homeFlow.HomeFlowFragment
-import net.eknm.eknmlogistics.homeFlow.HomeFlowModule
+import net.eknm.eknmlogistics.home.HomeFlowFragment
+import net.eknm.eknmlogistics.home.HomeFlowModule
 import net.eknm.eknmlogistics.mapInteraction.CenterLocationService
 import net.eknm.eknmlogistics.mapInteraction.LocationProvider
 import net.eknm.eknmlogistics.mapInteraction.LocationTrackingService
-import net.eknm.eknmlogistics.orderFlow.OrderFlowFragment
-import net.eknm.eknmlogistics.orderFlow.OrderFlowModule
+import net.eknm.eknmlogistics.order.OrderFlowFragment
+import net.eknm.eknmlogistics.order.OrderFlowModule
 import net.eknm.eknmlogistics.payments.PaymentsFlowFragment
 import net.eknm.eknmlogistics.payments.PaymentsFlowModule
 

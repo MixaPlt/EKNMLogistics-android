@@ -1,4 +1,4 @@
-package net.eknm.eknmlogistics.homeFlow
+package net.eknm.eknmlogistics.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,9 +11,9 @@ import net.eknm.eknmlogistics.BR
 import net.eknm.eknmlogistics.R
 import net.eknm.eknmlogistics.android.base.navigation.BaseFlowFragment
 import net.eknm.eknmlogistics.databinding.FragmentHomeFlowBinding
-import net.eknm.eknmlogistics.homeFlow.homeFragment.HomeFragment
-import net.eknm.eknmlogistics.homeFlow.homeFragment.HomeViewModel
-import net.eknm.eknmlogistics.orderFlow.OrderFlowFragment
+import net.eknm.eknmlogistics.home.homeFragment.HomeFragment
+import net.eknm.eknmlogistics.home.homeFragment.HomeViewModel
+import net.eknm.eknmlogistics.order.OrderFlowFragment
 
 class HomeFlowFragment : BaseFlowFragment<HomeFlowViewModel>() {
     override val vmClass = HomeFlowViewModel::class.java

@@ -22,8 +22,7 @@ import net.eknm.eknmlogistics.android.base.navigation.BaseFragmentActivity
 import net.eknm.eknmlogistics.android.base.navigation.DrawerManager
 import net.eknm.eknmlogistics.authorization.LoginActivity
 import net.eknm.eknmlogistics.databinding.ActivityRootBinding
-import net.eknm.eknmlogistics.homeFlow.HomeFlowFragment
-import net.eknm.eknmlogistics.homeFlow.homeFragment.HomeFragment
+import net.eknm.eknmlogistics.home.HomeFlowFragment
 import net.eknm.eknmlogistics.payments.PaymentsFlowFragment
 
 class RootActivity : BaseFragmentActivity<RootViewModel>() {

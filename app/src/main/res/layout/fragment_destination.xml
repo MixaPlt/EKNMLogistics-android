@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="net.eknm.eknmlogistics.orderFlow.destinationFragment.DestinationViewModel"
+            type="net.eknm.eknmlogistics.order.destinationFragment.DestinationViewModel"
             />
     </data>
 

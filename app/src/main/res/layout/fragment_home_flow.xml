@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="net.eknm.eknmlogistics.homeFlow.HomeFlowViewModel"
+            type="net.eknm.eknmlogistics.home.HomeFlowViewModel"
             />
     </data>
 

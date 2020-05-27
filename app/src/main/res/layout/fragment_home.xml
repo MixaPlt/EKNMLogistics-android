@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="net.eknm.eknmlogistics.homeFlow.homeFragment.HomeViewModel"
+            type="net.eknm.eknmlogistics.home.homeFragment.HomeViewModel"
             />
     </data>
 
