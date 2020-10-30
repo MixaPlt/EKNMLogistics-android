@@ -27,7 +27,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             leftActionClickListener="@{() -> viewModel.handleBackPress()}"
-            app:titleText="@string/app_name"
+            app:titleText="@string/registration"
             />
 
         <ImageView

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EknmLogistics</string>
+    <string name="toast_coming_soon">Скоро буде</string>
+
+    <!-- Login/Registration flow -->
+    <string name="text_login">Авторизація</string>
+    <string name="text_email">Пошта</string>
+    <string name="text_password">Пароль</string>
+    <string name="text_register">Зареєструватися</string>
+    <string name="invalid_email_format">Невірний формат пошти</string>
+    <string name="name_too_short">Ім\'я занадто коротке</string>
+    <string name="invalid_password">Невірний пароль</string>
+    <string name="registration">Реєстрація</string>
+
+    <!-- Navigation drawer -->
+    <string name="log_out">Вийти</string>
+    <string name="payment_methods">Методи оплати</string>
+    <string name="user_greeting">Доброго дня, %1s!</string>
+
+    <!-- Home page -->
+    <string name="home">Домашня сторінка</string>
+    <string name="create_order">Створити замовлення</string>
+
+    <!-- Order creation -->
+    <string name="select_start_destination">Вибрати стартову локацію</string>
+    <string name="select_end_destination">Вибрати кінцеву локацію</string>
+</resources>

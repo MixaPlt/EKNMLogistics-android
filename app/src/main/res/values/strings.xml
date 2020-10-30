@@ -10,6 +10,7 @@
     <string name="invalid_email_format">Invalid email format</string>
     <string name="name_too_short">Name too short</string>
     <string name="invalid_password">Invalid password</string>
+    <string name="registration">Registration</string>
 
     <!-- Navigation drawer -->
     <string name="log_out">Log out</string>
