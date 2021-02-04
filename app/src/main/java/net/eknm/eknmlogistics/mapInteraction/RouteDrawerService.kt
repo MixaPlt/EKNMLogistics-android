@@ -27,4 +27,13 @@ class RouteDrawerService @Inject constructor(
                 map.addPolyline(options)
             }
     }
+
+    @SuppressLint("CheckResult")
+    fun clearRoutes() {
+        lazyMap
+            .subscribe { map ->
+                //TODO: Clear only polylines
+                map.clear()
+            }
+    }
 }

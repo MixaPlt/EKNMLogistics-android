@@ -8,6 +8,7 @@ import net.eknm.eknmlogistics.R
 import net.eknm.eknmlogistics.android.base.navigation.BaseFlowFragment
 import net.eknm.eknmlogistics.order.destinationFragment.DestinationFragment
 import net.eknm.eknmlogistics.order.destinationFragment.DestinationViewModel
+import net.eknm.eknmlogistics.order.orderOverviewFragment.OrderOverviewFragment
 
 class OrderFlowFragment : BaseFlowFragment<OrderFlowViewModel>() {
     override val vmClass = OrderFlowViewModel::class.java
@@ -30,6 +31,10 @@ class OrderFlowFragment : BaseFlowFragment<OrderFlowViewModel>() {
     private fun observeViewModel() {
         viewModel.showEndDestinationFragmentEvent.observe(viewLifecycleOwner, Observer {
             showFragment(DestinationFragment.newInstance(getString(R.string.select_end_destination)))
+        })
+
+        viewModel.showOrderOverviewFragment.observe(viewLifecycleOwner, Observer {
+            showFragment(OrderOverviewFragment.newInstance())
         })
     }
 

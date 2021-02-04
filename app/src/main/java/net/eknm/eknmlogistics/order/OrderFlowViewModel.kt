@@ -22,6 +22,9 @@ class OrderFlowViewModel @Inject constructor(
     private val _showEndDestinationFragmentEvent = SingleLiveEvent<Unit>()
     val showEndDestinationFragmentEvent: LiveData<Unit> = _showEndDestinationFragmentEvent
 
+    private val _showOrderOverviewFragment = SingleLiveEvent<Unit>()
+    val showOrderOverviewFragment: LiveData<Unit> = _showOrderOverviewFragment
+
     fun onNewLocation(location: Location) {
         if (startLocation == null) {
             startLocation = location
@@ -38,7 +41,9 @@ class OrderFlowViewModel @Inject constructor(
                     }
                     .ioToMain()
                     .subscribe { route ->
+                        routeDrawerService.clearRoutes()
                         routeDrawerService.drawRoute(route)
+                        _showOrderOverviewFragment.call()
                     }
             }
         }
