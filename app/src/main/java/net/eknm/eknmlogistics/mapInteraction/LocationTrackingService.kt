@@ -1,7 +1,10 @@
 package net.eknm.eknmlogistics.mapInteraction
 
 import android.annotation.SuppressLint
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
 import io.reactivex.Flowable
 import io.reactivex.Single
 import io.reactivex.processors.BehaviorProcessor
@@ -50,6 +53,10 @@ class LocationTrackingService private constructor(
         this.googleMap = googleMap
         googleMap.setOnCameraMoveListener { handleMapMovement() }
         googleMap.setOnCameraIdleListener { mapCameraIdle.onNext(Unit) }
+
+        val cameraPosition = CameraPosition.fromLatLngZoom(LatLng(49.988358, 36.232845), 10f)
+        val cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition)
+        googleMap.moveCamera(cameraUpdate)
     }
 
     private fun handleMapMovement() {

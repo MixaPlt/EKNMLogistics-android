@@ -16,6 +16,7 @@ import net.eknm.eknmlogistics.BR
 import net.eknm.eknmlogistics.android.BackPressHandler
 import net.eknm.eknmlogistics.android.showToast
 import net.eknm.eknmlogistics.android.singleThreadLazy
+import net.eknm.eknmlogistics.home.HomePaddingManager
 import javax.inject.Inject
 
 abstract class BaseFragment<VM : BaseFragmentViewModel, DB : ViewDataBinding> : Fragment(),

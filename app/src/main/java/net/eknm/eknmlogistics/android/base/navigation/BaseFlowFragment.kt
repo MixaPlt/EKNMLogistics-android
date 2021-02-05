@@ -15,6 +15,7 @@ import dagger.android.support.HasSupportFragmentInjector
 import net.eknm.eknmlogistics.R
 import net.eknm.eknmlogistics.android.BackPressHandler
 import net.eknm.eknmlogistics.android.singleThreadLazy
+import net.eknm.eknmlogistics.home.HomePaddingManager
 import javax.inject.Inject
 
 abstract class BaseFlowFragment<VM : BaseFlowViewModel> : Fragment(), HasSupportFragmentInjector,
@@ -117,6 +118,12 @@ abstract class BaseFlowFragment<VM : BaseFlowViewModel> : Fragment(), HasSupport
             val childFlowVM = childFragment.viewModel
             childFlowVM.getOnFinishFlowEvent().observe(this, Observer {
                 onChildFlowFinished()
+            })
+        }
+
+        if (this is HomePaddingManager && childFragment is HomePaddingManager) {
+            childFragment.bottomPadding.observe(viewLifecycleOwner, Observer {
+                setBottomPadding(it)
             })
         }
     }

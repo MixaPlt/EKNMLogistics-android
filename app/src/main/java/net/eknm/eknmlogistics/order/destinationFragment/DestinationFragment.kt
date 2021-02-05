@@ -7,8 +7,11 @@ import kotlinx.android.synthetic.main.fragment_destination.*
 import net.eknm.eknmlogistics.R
 import net.eknm.eknmlogistics.android.base.navigation.BaseFragment
 import net.eknm.eknmlogistics.databinding.FragmentDestinationBinding
+import net.eknm.eknmlogistics.home.HomePaddingManager
+import net.eknm.eknmlogistics.home.HomePaddingManagerImpl
 
-class DestinationFragment : BaseFragment<DestinationViewModel, FragmentDestinationBinding>() {
+class DestinationFragment : BaseFragment<DestinationViewModel, FragmentDestinationBinding>(),
+    HomePaddingManager by HomePaddingManagerImpl() {
     override val layoutResId = R.layout.fragment_destination
     override val vmClass = DestinationViewModel::class.java
     private val title get() = arguments!!.getString(KEY_TITLE)!!
@@ -17,6 +20,10 @@ class DestinationFragment : BaseFragment<DestinationViewModel, FragmentDestinati
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
         toolbar.text = title
+
+        view.post {
+            setBottomPadding(destination.height)
+        }
     }
 
     private fun observeViewModel() {

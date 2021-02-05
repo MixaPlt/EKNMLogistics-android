@@ -8,6 +8,7 @@ import net.eknm.eknmlogistics.home.HomeFlowModule
 import net.eknm.eknmlogistics.mapInteraction.CenterLocationService
 import net.eknm.eknmlogistics.mapInteraction.LocationProvider
 import net.eknm.eknmlogistics.mapInteraction.LocationTrackingService
+import net.eknm.eknmlogistics.mapInteraction.MapPaddingManager
 import net.eknm.eknmlogistics.mapInteraction.RouteDrawerService
 import net.eknm.eknmlogistics.order.OrderFlowFragment
 import net.eknm.eknmlogistics.order.OrderFlowModule
@@ -52,6 +53,14 @@ interface RootActivityModule {
             rootActivity: RootActivity
         ): RouteDrawerService {
             return RouteDrawerService(rootActivity.mapSingle)
+        }
+
+        @Provides
+        @RootScope
+        fun provideMapPaddingManager(
+            rootActivity: RootActivity
+        ): MapPaddingManager {
+            return MapPaddingManager(rootActivity.mapSingle)
         }
     }
 }

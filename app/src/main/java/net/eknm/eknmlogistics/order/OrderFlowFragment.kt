@@ -6,11 +6,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import net.eknm.eknmlogistics.R
 import net.eknm.eknmlogistics.android.base.navigation.BaseFlowFragment
+import net.eknm.eknmlogistics.home.HomePaddingManager
+import net.eknm.eknmlogistics.home.HomePaddingManagerImpl
 import net.eknm.eknmlogistics.order.destinationFragment.DestinationFragment
 import net.eknm.eknmlogistics.order.destinationFragment.DestinationViewModel
 import net.eknm.eknmlogistics.order.orderOverviewFragment.OrderOverviewFragment
 
-class OrderFlowFragment : BaseFlowFragment<OrderFlowViewModel>() {
+class OrderFlowFragment : BaseFlowFragment<OrderFlowViewModel>(),
+    HomePaddingManager by HomePaddingManagerImpl() {
     override val vmClass = OrderFlowViewModel::class.java
     override fun initFlow() {
         showFragment(DestinationFragment.newInstance(getString(R.string.select_start_destination)))
