@@ -11,6 +11,7 @@ import javax.inject.Singleton
 class MapsRepository @Inject constructor(
     private val mapsApi: MapsApi
 ) {
+    //TODO: Add cache for geocode
     fun reverseGeocode(location: Location): Single<String> {
         return mapsApi
             .reverseGeocode(location.latitude, location.longitude)

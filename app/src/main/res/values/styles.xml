@@ -5,7 +5,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorOnPrimary">@color/colorOnPrimary</item>
-        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textViewStyle">@style/DefaultTextViewStyle</item>
     </style>
 
     <style name="MaterialButtonDefaultStyle" parent="Widget.MaterialComponents.Button">
@@ -37,6 +37,11 @@
         <item name="android:focusable">true</item>
     </style>
 
+    <style name="DefaultTextViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
     <style name="SmallSimpleImageButtonStyle" parent="Widget.AppCompat.ImageButton">
         <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
         <item name="android:minWidth">35dp</item>
@@ -47,5 +52,9 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopLeft">18dp</item>
         <item name="cornerSizeTopRight">18dp</item>
+    </style>
+
+    <style name="OverviewBottomSheetTheme" parent="AppTheme">
+        <item name="colorOnPrimary">@android:color/black</item>
     </style>
 </resources>

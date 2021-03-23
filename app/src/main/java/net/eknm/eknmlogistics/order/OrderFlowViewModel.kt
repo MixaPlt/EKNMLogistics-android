@@ -1,8 +1,6 @@
 package net.eknm.eknmlogistics.order
 
-import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import net.eknm.eknmlogistics.android.base.SingleLiveEvent
 import net.eknm.eknmlogistics.android.base.navigation.BaseFlowViewModel
 import net.eknm.eknmlogistics.android.ioToMain
@@ -14,7 +12,8 @@ import javax.inject.Inject
 
 class OrderFlowViewModel @Inject constructor(
     private val routeDrawerService: RouteDrawerService,
-    private val mapsRepository: MapsRepository
+    private val mapsRepository: MapsRepository,
+    private val orderCreationService: OrderCreationService
 ) : BaseFlowViewModel() {
     private var startLocation: Location? = null
     private var endLocation: Location? = null
@@ -28,15 +27,16 @@ class OrderFlowViewModel @Inject constructor(
     fun onNewLocation(location: Location) {
         if (startLocation == null) {
             startLocation = location
+            orderCreationService.setOrigin(location)
             _showEndDestinationFragmentEvent.call()
         } else {
             endLocation = location
+            orderCreationService.setDestination(location)
 
             executeDisposable {
                 mapsRepository
                     .createRoute(startLocation!!, endLocation!!)
                     .onErrorReturn {
-                        it
                         (Route(listOf(startLocation!!, endLocation!!)))
                     }
                     .ioToMain()
@@ -47,9 +47,5 @@ class OrderFlowViewModel @Inject constructor(
                     }
             }
         }
-    }
-
-    companion object {
-        const val TAG = "eknmlogistics.order"
     }
 }

@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="net.eknm.eknmlogistics.order.orderOverviewFragment.OrderOverviewViewModel"
+            />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -9,8 +19,9 @@
         >
 
         <net.eknm.eknmlogistics.android.ToolbarView
-            android:layout_width="0dp"
             style="@style/DefaultToolbarStyle"
+            leftActionClickListener="@{() -> viewModel.goBack()}"
+            android:layout_width="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -24,13 +35,77 @@
             android:background="@drawable/ic_top_rounded_13dp"
             android:clickable="true"
             android:elevation="10dp"
+            android:theme="@style/OverviewBottomSheetTheme"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.35"
             app:layout_constraintStart_toStartOf="parent"
             >
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/orderOverviewTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/your_order"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
+            <TextView
+                android:id="@+id/originText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/origin"
+                app:layout_constraintStart_toStartOf="@id/orderOverviewTitle"
+                app:layout_constraintTop_toBottomOf="@id/orderOverviewTitle"
+                />
+
+            <TextView
+                android:id="@+id/originAddress"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="5dp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"
+                android:text="@{viewModel.originLiveData}"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="@id/originText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/originText"
+                app:layout_constraintTop_toTopOf="@id/originText"
+                tools:text="Unnamed road"
+                />
+
+            <TextView
+                android:id="@+id/destinationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/destination"
+                app:layout_constraintStart_toStartOf="@id/orderOverviewTitle"
+                app:layout_constraintTop_toBottomOf="@id/originText"
+                />
+
+            <TextView
+                android:id="@+id/destinationAddress"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="5dp"
+                android:autoSizeMinTextSize="10sp"
+                android:autoSizeTextType="uniform"
+                android:text="@{viewModel.destinationLiveData}"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="@id/destinationText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/destinationText"
+                app:layout_constraintTop_toTopOf="@id/destinationText"
+                tools:text="Unnamed road"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

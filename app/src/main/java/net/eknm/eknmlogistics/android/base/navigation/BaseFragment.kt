@@ -16,7 +16,6 @@ import net.eknm.eknmlogistics.BR
 import net.eknm.eknmlogistics.android.BackPressHandler
 import net.eknm.eknmlogistics.android.showToast
 import net.eknm.eknmlogistics.android.singleThreadLazy
-import net.eknm.eknmlogistics.home.HomePaddingManager
 import javax.inject.Inject
 
 abstract class BaseFragment<VM : BaseFragmentViewModel, DB : ViewDataBinding> : Fragment(),
@@ -51,6 +50,7 @@ abstract class BaseFragment<VM : BaseFragmentViewModel, DB : ViewDataBinding> : 
         )
 
         binding.setVariable(BR.viewModel, viewModel)
+        binding.lifecycleOwner = viewLifecycleOwner
 
         viewModel.showToastEvent.observe(viewLifecycleOwner, Observer {
             context!!.showToast(it)
