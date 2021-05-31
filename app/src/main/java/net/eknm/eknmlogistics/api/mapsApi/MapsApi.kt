@@ -3,6 +3,7 @@ package net.eknm.eknmlogistics.api.mapsApi
 import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import io.reactivex.Single
+import net.eknm.eknmlogistics.mapInteraction.Location
 import net.eknm.eknmlogistics.mapInteraction.Route
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -25,6 +26,9 @@ interface MapsApi {
         @Query("destination_lat") destination_lat: Double,
         @Query("destination_lng") destination_lng: Double
     ): Single<Route>
+
+    @GET("near_drivers")
+    fun nearDrivers(): Single<List<Location>>
 
     companion object {
         fun newInstance(okHttpClient: OkHttpClient, baseUrl: String, gson: Gson): MapsApi {

@@ -3,13 +3,10 @@ package net.eknm.eknmlogistics.root
 import dagger.Module
 import dagger.Provides
 import dagger.android.ContributesAndroidInjector
+import net.eknm.eknmlogistics.api.mapsApi.MapsApi
 import net.eknm.eknmlogistics.home.HomeFlowFragment
 import net.eknm.eknmlogistics.home.HomeFlowModule
-import net.eknm.eknmlogistics.mapInteraction.CenterLocationService
-import net.eknm.eknmlogistics.mapInteraction.LocationProvider
-import net.eknm.eknmlogistics.mapInteraction.LocationTrackingService
-import net.eknm.eknmlogistics.mapInteraction.MapPaddingManager
-import net.eknm.eknmlogistics.mapInteraction.RouteDrawerService
+import net.eknm.eknmlogistics.mapInteraction.*
 import net.eknm.eknmlogistics.order.OrderFlowFragment
 import net.eknm.eknmlogistics.order.OrderFlowModule
 import net.eknm.eknmlogistics.payments.PaymentsFlowFragment
@@ -61,6 +58,24 @@ interface RootActivityModule {
             rootActivity: RootActivity
         ): MapPaddingManager {
             return MapPaddingManager(rootActivity.mapSingle)
+        }
+
+        @Provides
+        @RootScope
+        fun provideMapMarkerDrawingService(
+            rootActivity: RootActivity
+        ): MapMarkerDrawerService {
+            return MapMarkerDrawerService(rootActivity.mapSingle)
+        }
+
+        @Provides
+        @RootScope
+        fun provideDriversDrawerService(
+            mapsApi: MapsApi,
+            mapMarkerDrawerService: MapMarkerDrawerService,
+            rootActivity: RootActivity
+        ): DriversDrawerService {
+            return DriversDrawerService.create(mapsApi, mapMarkerDrawerService, rootActivity.applicationContext.resources)
         }
     }
 }

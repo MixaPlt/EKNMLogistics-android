@@ -5,6 +5,7 @@ import net.eknm.eknmlogistics.android.base.SingleLiveEvent
 import net.eknm.eknmlogistics.android.base.navigation.BaseFlowViewModel
 import net.eknm.eknmlogistics.android.ioToMain
 import net.eknm.eknmlogistics.api.mapsApi.MapsRepository
+import net.eknm.eknmlogistics.mapInteraction.DriversDrawerService
 import net.eknm.eknmlogistics.mapInteraction.Location
 import net.eknm.eknmlogistics.mapInteraction.Route
 import net.eknm.eknmlogistics.mapInteraction.RouteDrawerService
@@ -13,7 +14,8 @@ import javax.inject.Inject
 class OrderFlowViewModel @Inject constructor(
     private val routeDrawerService: RouteDrawerService,
     private val mapsRepository: MapsRepository,
-    private val orderCreationService: OrderCreationService
+    private val orderCreationService: OrderCreationService,
+    private val driversDrawerService: DriversDrawerService
 ) : BaseFlowViewModel() {
     private var startLocation: Location? = null
     private var endLocation: Location? = null

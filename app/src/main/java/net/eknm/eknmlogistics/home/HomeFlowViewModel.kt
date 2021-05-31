@@ -2,6 +2,7 @@ package net.eknm.eknmlogistics.home
 
 import net.eknm.eknmlogistics.android.base.navigation.BaseFlowViewModel
 import net.eknm.eknmlogistics.mapInteraction.CenterLocationService
+import net.eknm.eknmlogistics.mapInteraction.DriversDrawerService
 import net.eknm.eknmlogistics.mapInteraction.MapPaddingManager
 import javax.inject.Inject
 
