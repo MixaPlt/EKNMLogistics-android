@@ -21,7 +21,7 @@ class MapMarkerDrawerService @Inject constructor(
         lazyMap
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe { map ->
-                markers[tag]?.remove()
+                val previousMarker = markers[tag]
                 val markerOptions = MarkerOptions().apply {
                     position(LatLng(location.latitude, location.longitude))
                     icon(BitmapDescriptorFactory.fromBitmap(bitmap))
@@ -30,6 +30,7 @@ class MapMarkerDrawerService @Inject constructor(
                 val marker = map.addMarker(markerOptions)
                 marker.tag = tag
                 markers[tag] = marker
+                previousMarker?.remove()
             }
     }
 }

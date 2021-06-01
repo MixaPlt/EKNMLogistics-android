@@ -40,9 +40,10 @@ class DestinationViewModel @Inject constructor(
     }
 
     private fun updateAddress() {
+        val location = locationTrackingService.lastMapCameraState?.location ?: return
         executeDisposable {
             mapsRepository
-                .reverseGeocode(locationTrackingService.lastMapCameraState!!.location)
+                .reverseGeocode(location)
                 .ioToMain()
                 .subscribe({
                     _addressText.value = it
