@@ -13,11 +13,16 @@ import net.eknm.eknmlogistics.api.userApi.UserRegistrationRequestBody
 import javax.inject.Inject
 import javax.inject.Singleton
 
+interface AuthorizationRepository {
+    fun trackSession(): Flowable<Optional<String>>
+    fun trackUser(): Flowable<Optional<User>>
+}
+
 @Singleton
-class AuthorizationRepository @Inject constructor(
+class AuthorizationRepositoryImpl @Inject constructor(
     private val userApi: UserApi,
     private val localUserSource: LocalUserSource
-) {
+): AuthorizationRepository {
     private val userProcessor = BehaviorProcessor.create<Optional<User>>()
     val user get() = userProcessor.value?.item
 
@@ -26,7 +31,7 @@ class AuthorizationRepository @Inject constructor(
         return userApi.registerUser(body).doOnSuccess { onUserUpdated(it) }
     }
 
-    fun trackSession() = localUserSource.trackUserToken()
+    override fun trackSession() = localUserSource.trackUserToken()
 
     fun logOut() {
         localUserSource.saveUserToken(null)
@@ -39,7 +44,7 @@ class AuthorizationRepository @Inject constructor(
             .doOnSuccess { onUserUpdated(it) }
     }
 
-    fun trackUser(): Flowable<Optional<User>> {
+    override fun trackUser(): Flowable<Optional<User>> {
         updateUser()
         return userProcessor
     }

@@ -4,13 +4,13 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import net.eknm.eknmlogistics.android.base.SingleLiveEvent
 import net.eknm.eknmlogistics.android.base.navigation.BaseFlowViewModel
-import net.eknm.eknmlogistics.authorization.authorizationRepository.AuthorizationRepository
+import net.eknm.eknmlogistics.authorization.authorizationRepository.AuthorizationRepositoryImpl
 import net.eknm.eknmlogistics.authorization.authorizationRepository.User
 import net.eknm.eknmlogistics.mapInteraction.CenterLocationService
 import javax.inject.Inject
 
 class RootViewModel @Inject constructor(
-    private val authorizationRepository: AuthorizationRepository,
+    private val authorizationRepository: AuthorizationRepositoryImpl,
     private val centerLocationService: CenterLocationService
 ) : BaseFlowViewModel() {
 
