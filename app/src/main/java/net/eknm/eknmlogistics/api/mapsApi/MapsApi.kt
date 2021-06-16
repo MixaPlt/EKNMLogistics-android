@@ -28,7 +28,7 @@ interface MapsApi {
     ): Single<Route>
 
     @GET("near_drivers")
-    fun nearDrivers(): Single<List<Location>>
+    fun nearDrivers(): Single<List<NearDriver>>
 
     companion object {
         fun newInstance(okHttpClient: OkHttpClient, baseUrl: String, gson: Gson): MapsApi {
