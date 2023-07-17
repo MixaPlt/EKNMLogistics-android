@@ -8,17 +8,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
-import kotlinx.android.synthetic.main.toolbar.view.*
 import net.eknm.eknmlogistics.R
+import net.eknm.eknmlogistics.databinding.ToolbarBinding
 
 class ToolbarView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0
 ) : ConstraintLayout(context, attrs, defStyle) {
+
+    private val binding: ToolbarBinding
+
     init {
         val inflater = LayoutInflater.from(context)
-        inflater.inflate(R.layout.toolbar, this, true)
+        binding = ToolbarBinding.inflate(inflater, this)
         attrs?.let { parseAttributes(it) }
     }
 
@@ -52,39 +55,39 @@ class ToolbarView @JvmOverloads constructor(
     }
 
     var leftActionIconDrawable: Drawable?
-        get() = leftActionIcon.drawable
+        get() = binding.leftActionIcon.drawable
         set(value) {
-            leftActionIcon.setImageDrawable(value)
-            leftActionIcon.visibility = if (value == null) View.GONE else View.VISIBLE
+            binding.leftActionIcon.setImageDrawable(value)
+            binding.leftActionIcon.visibility = if (value == null) View.GONE else View.VISIBLE
         }
 
     var rightActionIconDrawable: Drawable?
-        get() = rightActionIcon.drawable
+        get() = binding.rightActionIcon.drawable
         set(value) {
-            rightActionIcon.setImageDrawable(value)
-            rightActionIcon.visibility = if (value == null) View.GONE else View.VISIBLE
+            binding.rightActionIcon.setImageDrawable(value)
+            binding.rightActionIcon.visibility = if (value == null) View.GONE else View.VISIBLE
         }
 
     fun setTitleTextColor(color: Int) {
-        titleText.setTextColor(color)
+        binding.titleText.setTextColor(color)
     }
 
     fun setLeftActionIconTint(tintColor: Int) {
-        leftActionIcon.applyTint(tintColor)
+        binding.leftActionIcon.applyTint(tintColor)
     }
 
     fun setRightActionIconTint(tintColor: Int) {
-        rightActionIcon.applyTint(tintColor)
+        binding.rightActionIcon.applyTint(tintColor)
     }
 
     fun setLeftActionIconClickListener(listener: ((View) -> Unit)) {
-        leftActionIcon.setOnClickListener(listener)
+        binding.leftActionIcon.setOnClickListener(listener)
     }
 
     var text: CharSequence
-        get() = titleText.text ?: ""
+        get() = binding.titleText.text ?: ""
         set(value) {
-            titleText.text = value
+            binding.titleText.text = value
         }
 
     private fun ImageView.applyTint(tintColor: Int) {

@@ -1,5 +1,6 @@
 package net.eknm.eknmlogistics.root
 
+import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
@@ -10,12 +11,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.findFragment
 import androidx.lifecycle.Observer
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import io.reactivex.subjects.SingleSubject
-import kotlinx.android.synthetic.main.activity_root.*
-import kotlinx.android.synthetic.main.layout_drawer.view.*
 import net.eknm.eknmlogistics.BR
 import net.eknm.eknmlogistics.R
 import net.eknm.eknmlogistics.android.base.navigation.BaseFragmentActivity
@@ -46,7 +46,7 @@ class RootActivity : BaseFragmentActivity<RootViewModel>() {
         binding.setVariable(BR.viewModel, viewModel)
 
         observeViewModel()
-        drawer.logOutBlock.setOnClickListener {
+        binding.drawer.logOutBlock.setOnClickListener {
             viewModel.logOut()
         }
 
@@ -64,12 +64,13 @@ class RootActivity : BaseFragmentActivity<RootViewModel>() {
 
     private fun checkPermissionsAndSetupMap() {
         if (checkPermissions()) {
-            (mapContainer as SupportMapFragment).getMapAsync { googleMap ->
+            (binding.drawerLayout.findFragment<SupportMapFragment>()).getMapAsync { googleMap ->
                 setupMap(googleMap)
                 mapSingle.onSuccess(googleMap)
             }
         }
     }
+
 
     private fun setupMap(googleMap: GoogleMap) {
         map = googleMap
@@ -77,7 +78,11 @@ class RootActivity : BaseFragmentActivity<RootViewModel>() {
         map.uiSettings.isMyLocationButtonEnabled = false
         map.uiSettings.isRotateGesturesEnabled = false
         map.uiSettings.isTiltGesturesEnabled = false
+        // Permission checked, but lint doesn't understand this
+        @SuppressLint("MissingPermission")
         map.isMyLocationEnabled = true
+
+
     }
 
     private fun observeViewModel() {
@@ -112,11 +117,11 @@ class RootActivity : BaseFragmentActivity<RootViewModel>() {
 
     @SuppressLint("RtlHardcoded")
     private fun openDrawer() {
-        drawerLayout.openDrawer(Gravity.LEFT, true)
+        binding.drawerLayout.openDrawer(Gravity.LEFT, true)
     }
 
     private fun closeDrawer() {
-        drawerLayout.closeDrawers()
+        binding.drawerLayout.closeDrawers()
     }
 
     override fun onAttachFragment(childFragment: Fragment) {

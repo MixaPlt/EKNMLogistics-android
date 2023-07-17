@@ -2,7 +2,6 @@ package net.eknm.eknmlogistics.home.homeFragment
 
 import android.os.Bundle
 import android.view.View
-import kotlinx.android.synthetic.main.fragment_home.*
 import net.eknm.eknmlogistics.R
 import net.eknm.eknmlogistics.android.base.navigation.BaseFragment
 import net.eknm.eknmlogistics.databinding.FragmentHomeBinding
@@ -18,7 +17,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>(),
         super.onViewCreated(view, savedInstanceState)
 
         view.post {
-            setBottomPadding(createOrderButton.height)
+            setBottomPadding(binding.createOrderButton.height)
         }
     }
 

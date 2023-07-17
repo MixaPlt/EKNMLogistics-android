@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import kotlinx.android.synthetic.main.fragment_home_flow.*
 import net.eknm.eknmlogistics.BR
 import net.eknm.eknmlogistics.R
 import net.eknm.eknmlogistics.android.base.navigation.BaseFlowFragment
@@ -16,10 +15,13 @@ import net.eknm.eknmlogistics.home.homeFragment.HomeFragment
 import net.eknm.eknmlogistics.home.homeFragment.HomeViewModel
 import net.eknm.eknmlogistics.order.OrderFlowFragment
 
-class HomeFlowFragment : BaseFlowFragment<HomeFlowViewModel>(),
+class HomeFlowFragment : BaseFlowFragment<HomeFlowViewModel, FragmentHomeFlowBinding>(),
     HomePaddingManager by HomePaddingManagerImpl() {
     override val vmClass = HomeFlowViewModel::class.java
     override val layoutId = R.layout.fragment_home_flow
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHomeFlowBinding =
+        FragmentHomeFlowBinding::inflate
+
     override fun initFlow() {
         showFragment(HomeFragment.newInstance())
     }
@@ -45,7 +47,7 @@ class HomeFlowFragment : BaseFlowFragment<HomeFlowViewModel>(),
         super.onViewCreated(view, savedInstanceState)
         bottomPadding.observe(viewLifecycleOwner, Observer {
             viewModel.setBottomPadding(it)
-            centerButton.translationY = -it.toFloat()
+            binding.centerButton.translationY = -it.toFloat()
         })
     }
 

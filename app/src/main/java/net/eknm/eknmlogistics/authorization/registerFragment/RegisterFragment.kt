@@ -2,7 +2,6 @@ package net.eknm.eknmlogistics.authorization.registerFragment
 
 import android.os.Bundle
 import android.view.View
-import kotlinx.android.synthetic.main.fragment_register.*
 import net.eknm.eknmlogistics.R
 import net.eknm.eknmlogistics.android.base.navigation.BaseFragment
 import net.eknm.eknmlogistics.databinding.FragmentRegisterBinding
@@ -13,12 +12,12 @@ class RegisterFragment : BaseFragment<RegisterViewModel, FragmentRegisterBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        registerButton.setOnClickListener {
+        binding.registerButton.setOnClickListener {
             if (checkValidFields()) {
                 viewModel.registerUser(
-                    etEmail.text.toString(),
-                    etLogin.text.toString(),
-                    etPassword.text.toString()
+                    binding.etEmail.text.toString(),
+                    binding.etLogin.text.toString(),
+                    binding.etPassword.text.toString()
                 )
             }
         }
@@ -35,15 +34,15 @@ class RegisterFragment : BaseFragment<RegisterViewModel, FragmentRegisterBinding
     }
 
     private fun checkEmailValid(): Boolean {
-        return etEmail.text?.contains('@') == true
+        return binding.etEmail.text?.contains('@') == true
     }
 
     private fun checkNameValid(): Boolean {
-        return etLogin.text?.isNotBlank() == true
+        return binding.etLogin.text?.isNotBlank() == true
     }
 
     private fun checkPasswordValid(): Boolean {
-        return etPassword.text?.let { it.length > 5 } == true
+        return binding.etPassword.text?.let { it.length > 5 } == true
     }
 
     companion object {

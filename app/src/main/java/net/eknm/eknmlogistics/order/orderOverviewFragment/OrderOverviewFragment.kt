@@ -2,7 +2,6 @@ package net.eknm.eknmlogistics.order.orderOverviewFragment
 
 import android.os.Bundle
 import android.view.View
-import kotlinx.android.synthetic.main.fragment_order_overview.*
 import net.eknm.eknmlogistics.R
 import net.eknm.eknmlogistics.android.base.navigation.BaseFragment
 import net.eknm.eknmlogistics.databinding.FragmentOrderOverviewBinding
@@ -18,7 +17,7 @@ class OrderOverviewFragment : BaseFragment<OrderOverviewViewModel, FragmentOrder
         super.onViewCreated(view, savedInstanceState)
 
         view.post {
-            setBottomPadding(bottomSheet.height)
+            setBottomPadding(binding.bottomSheet.height)
         }
     }
 

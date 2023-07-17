@@ -8,17 +8,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.viewbinding.ViewBinding
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.AndroidSupportInjection
-import dagger.android.support.HasSupportFragmentInjector
 import net.eknm.eknmlogistics.R
 import net.eknm.eknmlogistics.android.BackPressHandler
 import net.eknm.eknmlogistics.android.singleThreadLazy
+import net.eknm.eknmlogistics.databinding.LayoutFlowBinding
 import net.eknm.eknmlogistics.home.HomePaddingManager
 import javax.inject.Inject
 
-abstract class BaseFlowFragment<VM : BaseFlowViewModel> : Fragment(), HasSupportFragmentInjector,
+abstract class BaseFlowFragment<VM : BaseFlowViewModel, VB: ViewBinding> : Fragment(), HasSupportFragmentInjector,
     BackPressHandler, DrawerManager by DrawerManagerImpl() {
 
     protected abstract fun initFlow()
@@ -26,6 +27,13 @@ abstract class BaseFlowFragment<VM : BaseFlowViewModel> : Fragment(), HasSupport
     protected abstract val vmClass: Class<VM>
 
     protected open val layoutId: Int = R.layout.layout_flow
+
+    private var _binding: ViewBinding? = null
+    abstract val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> VB
+
+    @Suppress("UNCHECKED_CAST")
+    protected val binding: VB
+        get() = _binding as VB
 
     protected val currentFragment
         get() = childFragmentManager.findFragmentById(R.id.container)
@@ -50,7 +58,8 @@ abstract class BaseFlowFragment<VM : BaseFlowViewModel> : Fragment(), HasSupport
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(layoutId, container, false)
+        _binding = bindingInflater.invoke(inflater, container, false)
+        return requireNotNull(_binding).root
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -60,7 +69,7 @@ abstract class BaseFlowFragment<VM : BaseFlowViewModel> : Fragment(), HasSupport
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         savedInstanceState?.let { viewModel.onViewStateRestored(it) }
-            ?: if (currentFragment == null) initFlow()
+            ?: if (currentFragment == null) initFlow() else null
 
         viewModel.openDrawerEvent.observe(viewLifecycleOwner, Observer {
             openDrawer()
@@ -114,7 +123,7 @@ abstract class BaseFlowFragment<VM : BaseFlowViewModel> : Fragment(), HasSupport
         if (childFragment is BaseFragment<*, *>) {
             subscribeToBackEvents(childFragment.viewModel)
         }
-        if (childFragment is BaseFlowFragment<*>) {
+        if (childFragment is BaseFlowFragment<*, *>) {
             val childFlowVM = childFragment.viewModel
             childFlowVM.getOnFinishFlowEvent().observe(this, Observer {
                 onChildFlowFinished()

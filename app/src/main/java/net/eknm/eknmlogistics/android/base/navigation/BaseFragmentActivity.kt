@@ -19,7 +19,7 @@ abstract class BaseFragmentActivity<VM : BaseViewModel> : DaggerAppCompatActivit
     @Inject
     lateinit var viewModelFactory: ViewModelFactory<VM>
 
-    protected open val currentFlowFragment get() = supportFragmentManager.findFragmentById(R.id.container) as? BaseFlowFragment<*>
+    protected open val currentFlowFragment get() = supportFragmentManager.findFragmentById(R.id.container) as? BaseFlowFragment<*, *>
 
     protected val viewModel by singleThreadLazy {
         ViewModelProviders.of(this, viewModelFactory)[vmClass]

@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import dagger.android.support.AndroidSupportInjection
 import net.eknm.eknmlogistics.BR
 import net.eknm.eknmlogistics.android.BackPressHandler
@@ -27,7 +26,7 @@ abstract class BaseFragment<VM : BaseFragmentViewModel, DB : ViewDataBinding> : 
     protected abstract val layoutResId: Int
 
     val viewModel by singleThreadLazy {
-        ViewModelProviders.of(this, viewModelFactory)[vmClass]
+        viewModelFactory.create(vmClass)
     }
 
     private var nullableBindingProperty: DB? = null
@@ -50,14 +49,14 @@ abstract class BaseFragment<VM : BaseFragmentViewModel, DB : ViewDataBinding> : 
         )
 
         binding.setVariable(BR.viewModel, viewModel)
-        binding.lifecycleOwner = viewLifecycleOwner
+        binding.lifecycleOwner = this
 
         viewModel.showToastEvent.observe(viewLifecycleOwner, Observer {
-            context!!.showToast(it)
+            requireContext().showToast(it)
         })
 
         viewModel.showStringToastEvent.observe(viewLifecycleOwner, Observer {
-            context!!.showToast(it)
+            requireContext().showToast(it)
         })
         viewModel.openDrawerEvent.observe(viewLifecycleOwner, Observer {
             openDrawer()
@@ -80,7 +79,7 @@ abstract class BaseFragment<VM : BaseFragmentViewModel, DB : ViewDataBinding> : 
         }
     }
 
-    fun showToast(@StringRes textRes: Int) = context!!.showToast(textRes)
+    fun showToast(@StringRes textRes: Int) = requireContext().showToast(textRes)
 
     override fun onSaveInstanceState(outState: Bundle) {
         viewModel.onSaveInstanceState(outState)

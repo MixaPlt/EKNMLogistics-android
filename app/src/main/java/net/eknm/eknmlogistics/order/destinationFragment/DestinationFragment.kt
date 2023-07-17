@@ -3,7 +3,6 @@ package net.eknm.eknmlogistics.order.destinationFragment
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import kotlinx.android.synthetic.main.fragment_destination.*
 import net.eknm.eknmlogistics.R
 import net.eknm.eknmlogistics.android.base.navigation.BaseFragment
 import net.eknm.eknmlogistics.databinding.FragmentDestinationBinding
@@ -14,21 +13,21 @@ class DestinationFragment : BaseFragment<DestinationViewModel, FragmentDestinati
     HomePaddingManager by HomePaddingManagerImpl() {
     override val layoutResId = R.layout.fragment_destination
     override val vmClass = DestinationViewModel::class.java
-    private val title get() = arguments!!.getString(KEY_TITLE)!!
+    private val title get() = requireArguments().getString(KEY_TITLE)!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeViewModel()
-        toolbar.text = title
+        binding.toolbar.text = title
 
         view.post {
-            setBottomPadding(destination.height)
+            setBottomPadding(binding.destination.height)
         }
     }
 
     private fun observeViewModel() {
         viewModel.addressText.observe(viewLifecycleOwner, Observer {
-            destination.text = it
+            binding.destination.text = it
         })
     }
 
